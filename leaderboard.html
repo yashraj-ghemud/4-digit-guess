@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard • CodeBreaker</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>LEADER<span>BOARD</span> // Winners</h1>
+    <p>Players who cracked the code successfully ✅</p>
+
+    <div class="table" id="list"></div>
+
+    <div class="small">
+      <a href="./index.html">← Back to Register</a>
+      &nbsp; • &nbsp;
+      <a href="./crack.html">Crack Page</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { db } from "./firebase.js";
+    import { collection, query, where, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+
+    const list = document.getElementById("list");
+
+    function formatTime(ts){
+      try{
+        const d = ts.toDate();
+        return d.toLocaleString();
+      }catch(e){
+        return "—";
+      }
+    }
+
+    async function loadLeaderboard(){
+      list.innerHTML = `<div class="item"><span>Loading...</span><span class="time">⏳</span></div>`;
+
+      const q = query(
+        collection(db, "players"),
+        where("cracked", "==", true),
+        orderBy("crackedAt", "asc")
+      );
+
+      const snap = await getDocs(q);
+
+      if(snap.empty){
+        list.innerHTML = `<div class="item"><span>No winners yet 👀</span><span class="time">—</span></div>`;
+        return;
+      }
+
+      let rank = 1;
+      list.innerHTML = "";
+
+      snap.forEach(docu => {
+        const d = docu.data();
+
+        const row = document.createElement("div");
+        row.className = "item";
+        row.innerHTML = `
+          <div>
+            <div><span class="rank">#${rank}</span> ${d.displayName || "Unknown"}</div>
+            <div class="time">Attempts: ${d.attempts || 0}</div>
+          </div>
+          <div class="time">${formatTime(d.crackedAt)}</div>
+        `;
+
+        list.appendChild(row);
+        rank++;
+      });
+    }
+
+    loadLeaderboard();
+  </script>
+</body>
+</html>
