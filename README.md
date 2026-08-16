@@ -1,5 +1,32 @@
-# 4-digit-guess
-> Small static client-side web app (CodeBreaker) that assigns a 4-digit secret per player in Firestore and includes a Playwright Python script demonstrating brute-force attempts.
+<p align="center">
+  <img src="./.github/readme-assets/playground.gif" alt="Animated playground / experience visual for 4-digit-guess" width="100%" />
+</p>
+
+<h1 align="center">4-digit-guess</h1>
+
+<p align="center"><strong>Small static client-side web app (CodeBreaker) that assigns a 4-digit secret per player in Firestore and includes a Playwright Python script demonstrating brute-force attempts.</strong></p>
+
+<p align="center"><code>REPO//SIGNAL</code> · <code>PLAYGROUND / EXPERIENCE</code> · <code>LOOPING README EXPERIENCE</code></p>
+
+## Live signal
+
+| Lens | Readout |
+| --- | --- |
+| Portfolio lane | **PLAYGROUND / EXPERIENCE** |
+| Code surface | **7** tracked files observed |
+| Primary materials | **HTML, Markdown, Python, JavaScript** |
+| Verification | **0** test-related files observed |
+
+> A kinetic frame for interaction, play, and visual craft. The animated frame above is a lightweight visual signature; the sections below remain the source of truth for implementation details.
+
+## Motion map
+
+`DISCOVER` → `INTERACT` → `ITERATE`
+
+Start with the experience surface, follow the main interaction loop, then iterate on feedback, accessibility, and performance. The README is designed as a quick visual entry point before the deeper project dossier.
+
+<details open>
+<summary><strong>Open the full project dossier</strong></summary>
 
 ## Overview
 A minimal, client-only prototype that implements a simple PIN-guessing game using browser code and direct Firestore access. The repository contains three HTML pages (registration, cracking UI, leaderboard), a firebase.js module with Firebase configuration, and a Playwright automation script (crack.py) that demonstrates automated brute-force against a similar UI.
@@ -75,3 +102,9 @@ Recommendations for contributors (based on observed gaps, not prescriptive comma
 - Do not assume existing tests or CI; include changes and rationale in PR descriptions.
 
 (There is no license file explicitly included in the repository evidence.)
+
+</details>
+
+---
+
+<p align="center"><sub>README motion system · visual layer by RepoSignal · implementation details remain project-specific</sub></p>
